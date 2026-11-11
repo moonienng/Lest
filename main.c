@@ -3,7 +3,7 @@
 #include <locale.h>
 #include <string.h>
 #include <ctype.h>
-#include "bib_arv.h"
+#include "bib_hasharvre.h"
 #include "bib_lest.h"
 
 int main()
