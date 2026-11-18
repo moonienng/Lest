@@ -2,19 +2,27 @@
 #define BIB_HASH_H
 
 typedef struct equipamento{
-int cui;
-char neq[11] ;
-struct equipamento *prx;
+    int cui;
+    char neq[11] ;
+    struct equipamento *prx;
 }EQ;
 
+typedef struct lista
+{
+    EQ *inicio;
+}
+
 typedef struct incidente{
-int nui;
-int cui;
-int grv;
-struct incidente *esq;
-struct incidente *dir;
+    int nui;
+    int cui;
+    int grv;
+    struct incidente *esq;
+    struct incidente *dir;
 }IC;
 
+typedef struct ABB{
+    IC *raiz;
+}
 
 //TODO: arv IniciaArvore(): 
 //TODO: int ArvoreVazia(arv Pai): Verifica se a arvore tá vazia
