@@ -64,11 +64,16 @@ int main()
         5. Insere o incidente na ABB
       */
      int nui, cdu, grv;
+     printf("\nDigite o Numero Unico de Identificação:");
      scanf("%d",&nui);
+     printf("\nDigite o Código do Equipamento:");
      scanf("%d",&cdu);
+     printf("\nDigite a gravidade do incidente:");
      scanf("%d",&grv);
 
-     CadastroIC(nui,cdu,grv);
+     CadastroIC(nui,cdu,grv,R);
+     printf("\n Cadastro Realizado!");
+     system("pause");
     break;
     case 3:
       printf("----------------------------- Consultar Equipamento e Incidente -----------------------------");

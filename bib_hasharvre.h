@@ -9,6 +9,7 @@ typedef struct equipamento
 {
     int cui;
     char neq[11];
+    REL *INC;
     struct equipamento *prx;
 } EQ;
 
@@ -25,19 +26,16 @@ typedef struct ABB
 {
     IC *raiz;
 }ABB;
-/*
+typedef struct relacao
+{
+    ICEQ *inicio;
+}REL;
 typedef struct incequi
 {
     int ni;
     struct incequi *prox;
 }ICEQ;
 
-typedef struct relacao
-{
-    ICEQ *inicio;
-}REL;
-
-*/
 /*
     Será necessário:
         1. Funções de Arvore
@@ -65,7 +63,22 @@ int ArvoreVazia (ABB* R)
 //TODO: InsereFolha(): Recebe um endereço e insere na árvore. Inserção do maior na esquerda
     IC* InsereFolha(IC *R, IC *novo)
     {
-        
+        if(R == NULL) //arvore vazia
+        {
+            return novo;
+        }
+        else //arvore com gente
+        {
+            if(novo->nui > R->nui)
+            {
+                R->esq = InsereFolha(R->esq, novo);
+            }
+            else
+            {
+                R->dir = InsereFolha(R->dir, novo);
+            }
+            return R;
+        }
     }
 //TODO: RemoveFolha(): Recebe o número de identificação, chama a Busca direta e remove um incidente da arvore. Considere os 3 casos. A regra é o maior número da subarvore da esquerda
 //TODO: ImprimeArvore(): Recebe raiz da árvore, percorre (In Order) imprimindo 
@@ -107,6 +120,19 @@ void IniciaTH(EQ *TH[])
     }
 }
 
+EQ* BuscaEQ(EQ *TH[], int pos, int cod)
+{
+    EQ *aux = TH[pos];
+    while(aux !=NULL)
+    {
+        if(aux->cui == cod)
+        {
+            return aux;
+        }
+        aux = aux->prx;
+    } 
+    return aux;
+}
 
 
 
