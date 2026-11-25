@@ -5,13 +5,13 @@
 #include <ctype.h>
 #include "bib_hasharvre.h"
 #include "bib_lest.h"
- 
+
 int main()
 {
   EQ *TH[M];
   IniciaTH(TH);
   ABB *R = IniciaArvore();
-  int op; 
+  int op;
   do
   {
     printf("Digite a opção desejada:");
@@ -71,17 +71,17 @@ int main()
      printf("\nDigite a gravidade do incidente:");
      scanf("%d",&grv);
 
-     CadastroIC(nui,cdu,grv,R);
+     CadastroIC(nui,cdu,grv,R,TH);
      printf("\n Cadastro Realizado!");
      system("pause");
     break;
     case 3:
       printf("----------------------------- Consultar Equipamento e Incidente -----------------------------");
-      
+
     break;
     case 4:
       printf("----------------------------- Listar todos os Incidentes -----------------------------");
-      
+
     break;
     case 5:
       printf("----------------------------- Excluir um Incidente -----------------------------");
@@ -90,7 +90,7 @@ int main()
           1.1 Verifica se o número existe
           -> se não, exibe uma mensagem de erro e encerra case 5
           -> se sim, continue
-        2. Exibe o incidente 
+        2. Exibe o incidente
         3. Recebe confirmação
           -> se não, exibe mensagem e encerra case 5
           -> se sim, continue

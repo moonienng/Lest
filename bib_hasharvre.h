@@ -4,12 +4,16 @@
 #include <stdlib.h>
 
 #define M 43 // tamanho da tabela hash
-
+typedef struct incequi
+{
+    int ni;
+    struct incequi *prox;
+}ICEQ;
 typedef struct equipamento
 {
     int cui;
     char neq[11];
-    REL *INC;
+    ICEQ *INC;
     struct equipamento *prx;
 } EQ;
 
@@ -26,15 +30,7 @@ typedef struct ABB
 {
     IC *raiz;
 }ABB;
-typedef struct relacao
-{
-    ICEQ *inicio;
-}REL;
-typedef struct incequi
-{
-    int ni;
-    struct incequi *prox;
-}ICEQ;
+
 
 /*
     Será necessário:
@@ -50,7 +46,7 @@ typedef struct incequi
         R->raiz=NULL;
         return R;
     }
- 
+
 // int ArvoreVazia(arv raiz): Verifica se a arvore tá vazia
 int ArvoreVazia (ABB* R)
 {
@@ -58,7 +54,7 @@ int ArvoreVazia (ABB* R)
     return 0;
 
 }
-//TODO: BuscaDireta(): Recebe número de identificação e retorna o endereço correspondente ou null 
+//TODO: BuscaDireta(): Recebe número de identificação e retorna o endereço correspondente ou null
 //TODO: ImprimeFolha(): Recebe um endereço e imprime as informações daquela folha
 //TODO: InsereFolha(): Recebe um endereço e insere na árvore. Inserção do maior na esquerda
     IC* InsereFolha(IC *R, IC *novo)
@@ -81,7 +77,7 @@ int ArvoreVazia (ABB* R)
         }
     }
 //TODO: RemoveFolha(): Recebe o número de identificação, chama a Busca direta e remove um incidente da arvore. Considere os 3 casos. A regra é o maior número da subarvore da esquerda
-//TODO: ImprimeArvore(): Recebe raiz da árvore, percorre (In Order) imprimindo 
+//TODO: ImprimeArvore(): Recebe raiz da árvore, percorre (In Order) imprimindo
 
 // FUNÇÕES DE LISTA
 
@@ -120,8 +116,9 @@ void IniciaTH(EQ *TH[])
     }
 }
 
-EQ* BuscaEQ(EQ *TH[], int pos, int cod)
+EQ* BuscaEQ(EQ *TH[], int cod)
 {
+    int pos = MetodoDivisao(cod);
     EQ *aux = TH[pos];
     while(aux !=NULL)
     {
@@ -130,7 +127,7 @@ EQ* BuscaEQ(EQ *TH[], int pos, int cod)
             return aux;
         }
         aux = aux->prx;
-    } 
+    }
     return aux;
 }
 

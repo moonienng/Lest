@@ -22,15 +22,14 @@ void CadastroIC(int nud, int cud, int gra, ABB *R, EQ *TH[]) //insere arv
     novo -> nui = nud;
     novo -> esq = NULL;
     novo ->dir = NULL;
-    R->raiz = InsereArv(novo,R->raiz);
-    
-    int pos = MetodoDivisao(cud);
-    EQ *aux = BuscaEQ(TH,pos,cud);
+    R->raiz = InsereFolha(novo,R->raiz);
 
-    //Acessa a lista de incidentes do equipamento
-    /*
-    1. Se vazio, coloca o incidente no primeiro lugar da lista
-    2. se não vazio coloca no começo (não tem que percorrer)
-    */
+    EQ *aux = BuscaEQ(TH,cud);
+
+    ICEQ *REL = (ICEQ *) malloc (sizeof(ICEQ));
+    REL -> ni = nud;
+    REL -> prox = aux->INC;
+    aux -> INC = REL;
+
 }
 #endif
