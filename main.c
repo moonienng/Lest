@@ -5,9 +5,12 @@
 #include <ctype.h>
 #include "bib_hasharvre.h"
 #include "bib_lest.h"
-
+ 
 int main()
 {
+  EQ *TH[M];
+  IniciaTH(TH);
+  ABB *R = IniciaArvore();
   int op; 
   do
   {
@@ -17,6 +20,29 @@ int main()
   {
     case 1:
       printf("----------------------------- Cadastrar Equipamento -----------------------------");
+      /*
+        1. Recebe o código único de identificação
+          1.1 Verifica se o código já existe
+          -> se sim, informe que já existe e encerre o case 1
+          -> se não, continue
+        2. Recebe o nome do equipamento
+        3. Cria um novo equipamento
+        4. Cálcula qual a posição que o equipamento vai ser inserido
+        5. Insere na posição correta
+          5.1 Verifique se a posição está vazia
+            -> se sim, crie uma lista e insira o novo equipamento na primeira posição
+            -> se não, insira na ultima posição
+      */
+     int cod;
+     char neq[11];
+     printf("\nDigite o Código Único de Cadastro:");
+     scanf("%d",&cod); //le codigo
+     printf("\nDigite o nome do equipamento:");
+     fgets(neq, sizeof(neq), stdin);
+     while (getchar() != '\n');
+     CadastroEQ(cod,neq,TH);
+     printf("\nCadastro Realizado!");
+     system("pause");
     break;
     case 2:
       printf("----------------------------- Registrar Incidente -----------------------------");
@@ -37,6 +63,17 @@ int main()
         4. Cria um novo incidente
         5. Insere o incidente na ABB
       */
+     int nui, cdu, grv;
+     printf("\nDigite o Numero Unico de Identificação:");
+     scanf("%d",&nui);
+     printf("\nDigite o Código do Equipamento:");
+     scanf("%d",&cdu);
+     printf("\nDigite a gravidade do incidente:");
+     scanf("%d",&grv);
+
+     CadastroIC(nui,cdu,grv,R);
+     printf("\n Cadastro Realizado!");
+     system("pause");
     break;
     case 3:
       printf("----------------------------- Consultar Equipamento e Incidente -----------------------------");
@@ -62,6 +99,16 @@ int main()
     break;
     case 6:
       printf("----------------------------- Excluir um Equipamento -----------------------------");
+      /*
+        1. Recebe um código de identificação
+          1.1 Verifique se o código existe
+            -> se sim, exiba o equipamento e o número de incidentes vinculados e peça confirmação
+              -> se não, encerre o case 6
+              -> se sim, continue
+            -> se não, exiba erro e encerre o case 6;
+        2. Exclua da árvore todos os incidentes com o código vinculado
+        3. Exclua o Equipamento
+      */
     break;
     case 7:
       printf("----------------------------- Encerrar Programa -----------------------------");
