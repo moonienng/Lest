@@ -13,7 +13,7 @@ int main()
   EQ *TH[M];
   IniciaTH(TH);
   ABB *R = IniciaArvore();
-  int op; 
+  int op;
   do
   {
     printf("\nDigite a opção desejada:");
@@ -97,7 +97,7 @@ int main()
           1.1 Verifica se o número existe
           -> se não, exibe uma mensagem de erro e encerra case 5
           -> se sim, continue
-        2. Exibe o incidente 
+        2. Exibe o incidente
         3. Recebe confirmação
           -> se não, exibe mensagem e encerra case 5
           -> se sim, continue

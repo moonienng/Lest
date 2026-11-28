@@ -49,8 +49,9 @@ void IniciaTH(EQ *TH[])
         TH[i] = NULL;
 }
 
-EQ* BuscaEQ(EQ *TH[], int pos, int cod)
+EQ* BuscaEQ(EQ *TH[], int cod)
 {
+    int pos = MetodoDivisao(cod);
     EQ *aux = TH[pos];
     while (aux != NULL) {
         if (aux->cui == cod)
